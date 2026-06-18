@@ -3827,8 +3827,8 @@ ABOUT ALISHA:
 
 Be warm, specific, encouraging, and practical. Speak like a close friend who really knows her. Reference her specific goals and situation. Keep responses conversational and under 200 words unless she asks for something detailed.`;
   try {
-    const text = await callAI(messages, 600, system);
-    const reply = data.content?.[0]?.text || 'Something went wrong. Try again!';
+    const messages = chatHistory.slice(-10);
+    const reply = await callAI(messages, 600, system);
     removeLastTyping();
     appendChatMsg(reply, 'ai');
     chatHistory.push({role:'assistant', content: reply});
@@ -3976,8 +3976,8 @@ async function generateDentalDailyTask() {
   if (cached) { el.textContent = '🦷 ' + cached; return; }
   el.textContent = '🦷 Loading your task for today...';
   try {
-    const text = await callAI(messages, 80);
-    const task = data.content?.[0]?.text?.trim() || 'Review one dental school target and update your master doc.';
+    const messages = [{role:'user', content: 'Give Alisha ONE specific actionable dental school prep task for today (' + new Date().toLocaleDateString('en-US',{weekday:'long'}) + '). She is a pre-dental UC Berkeley student applying 2026, has shadowing, research (URAP), studying for DAT. Vary between: DAT study, application writing, research, networking, shadowing reflection, school research, LOR planning, essay work. One sentence only, no emoji at start.'}];
+    const task = (await callAI(messages, 80)).trim() || 'Review one dental school target and update your master doc.';
     save(dateKey, task);
     el.textContent = '🦷 ' + task;
   } catch(e) {
