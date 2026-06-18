@@ -3250,6 +3250,7 @@ async function generateRecipe() {
   el.style.display = 'block';
   el.innerHTML = '<div style="font-size:13px;color:var(--text2)">Getting recipe idea...</div>';
   try {
+    const messages = [{role:'user', content: 'You are a nutrition-aware recipe assistant for Alisha, a young Indian-American college student doing strength training. She enjoys Indian and American food. Her highly-rated foods include: ' + (highRated || 'dal, chicken, salads, smoothies') + '. Request: "' + (prompt || 'Quick healthy meal idea') + '". Give a short practical recipe with name, why it suits her health goals, ingredients, and 4-5 simple steps. Under 300 words. Encouraging tone.'}];
     const text = await callAI(messages, 600);    el.innerHTML = '<div style="background:white;border-radius:12px;padding:14px;font-size:13px;line-height:1.7;color:var(--text)">' + text.replace(/\n/g,'<br>') + '</div><button class="btn btn-outline btn-sm" style="width:100%;margin-top:8px" onclick="saveRecipe()">💾 Save Recipe</button>';
     window._lastRecipe = text;
   } catch(e) {
@@ -3671,6 +3672,7 @@ async function getProductAdvice() {
   el.style.display = 'block';
   el.innerHTML = '<div style="font-size:13px;color:var(--text2)">Getting personalized advice...</div>';
   try {
+    const messages = [{role:'user', content: 'You are a product advisor for Alisha, a college student with combination/slightly oily South Asian skin, health-conscious, student budget, does strength training, working toward dental school. Query: "' + query + '". Give 1-2 specific product suggestions, why good for her, price range, budget tips. Under 200 words. Friendly and specific.'}];
     const text = await callAI(messages, 500);    el.innerHTML = '<div style="background:white;border-radius:12px;padding:14px;font-size:13px;line-height:1.7;color:var(--text)">' + text.replace(/\n/g,'<br>') + '</div>';
   } catch(e) {
     el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not load advice.</div>';
@@ -4444,6 +4446,7 @@ async function rateMyDay() {
   const mealList = dayLogs.map(l => `${l.meal}: ${l.name} (felt: ${l.feel})`).join('\n');
   
   try {
+    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, a young Indian-American college student doing strength training, trying to lower resting heart rate, build lean muscle, improve energy. She eats Indian and American food.\n\nHere is what she ate on ' + dateToShow + ':\n' + mealList + '\n\nGive: 1) Overall Nutrition Score X/10 with reason 2) Estimated Macros (protein/carbs/fat ranges) 3) Key Micronutrients she got or missed (flag iron, calcium, vitamin D) 4) 3 quick wins 5) 1-2 things to adjust 6) Warm encouraging closing. Be specific to her actual meals.'}];
     const text = await callAI(messages, 600);    el.innerHTML = `<div style="background:var(--mint-light);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;color:var(--text)">${text.replace(/\n/g,'<br>')}</div>`;
   } catch(e) {
     el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not analyze. Try again.</div>';
@@ -4569,6 +4572,7 @@ async function rateMyWeek() {
     return dayMeals.length ? `${d}: ${dayMeals.map(m => m.name).join(', ')}` : `${d}: nothing logged`;
   }).join('\n');
   try {
+    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, young Indian-American college student doing strength training, trying to lower resting HR, build lean muscle, improve energy.\n\nThis week food log:\n' + summary + '\n\nGive a WEEKLY nutrition review: 1) Weekly Nutrition Score X/10 2) Average estimated macros 3) Micronutrient patterns (flag iron, calcium, vit D) 4) Best eating day and why 5) Biggest nutrition gap 6) 3 specific recommendations for next week 7) Encouraging closing. Be specific and warm.'}];
     const text = await callAI(messages, 700);    el.innerHTML = `<div style="background:var(--sky-light);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;color:var(--text)"><strong style="color:#0369a1">📊 Weekly Nutrition Review</strong><br><br>${text.replace(/\n/g,'<br>')}</div>`;
   } catch(e) { el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not analyze. Try again.</div>'; }
 }
@@ -4587,6 +4591,7 @@ async function rateMyMonth() {
   const feelBad = monthLogs.filter(l => l.feel && (l.feel.includes('Not great') || l.feel.includes('Bad'))).map(l => l.name);
   const highRated = monthLogs.filter(l => l.rating && l.rating.startsWith('⭐⭐⭐⭐')).map(l => l.name);
   try {
+    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, young Indian-American college student doing strength training, working to lower high resting HR, build lean muscle, improve energy.\n\nThis month she logged ' + monthLogs.length + ' meals. Foods eaten: ' + mealNames.slice(0,500) + '\nFoods that made her feel bad: ' + (feelBad.slice(0,10).join(', ') || 'none flagged') + '\nHighly rated foods: ' + (highRated.slice(0,10).join(', ') || 'none') + '\n\nGive a MONTHLY nutrition analysis: 1) Monthly Nutrition Score X/10 2) Macro pattern 3) Top 3 micronutrient concerns 4) Foods that suit her well 5) Foods to reduce 6) Top 3 goals for next month 7) Encouraging closing. Be specific and practical.'}];
     const text = await callAI(messages, 700);    el.innerHTML = `<div style="background:var(--gold-light);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;color:var(--text)"><strong style="color:#b45309">📅 Monthly Nutrition Review</strong><br><br>${text.replace(/\n/g,'<br>')}</div>`;
   } catch(e) { el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not analyze. Try again.</div>'; }
 }
@@ -4813,7 +4818,8 @@ async function addAIClass() {
   statusEl.style.display = 'block';
   statusEl.textContent = '✨ Generating study system for ' + name + '...';
   try {
-    const text = await callAI(messages, 1000);    text = text.replace(/```json|```/g,'').trim();
+    const messages = [{role:'user', content: 'Create a study system for a college class called "' + name + '". Description: "' + (desc || 'No description provided') + '".\n\nAlisha is a pre-dental UC Berkeley student. She uses active recall, spaced repetition (Anki), Feynman technique, Pomodoro. She has midterms and finals.\n\nReturn ONLY valid JSON (no markdown): {"phases":[{"title":"Before Lecture","tasks":["task 1","task 2","task 3"]},{"title":"After Lecture","tasks":["task 1","task 2","task 3"]},{"title":"Weekly Review","tasks":["task 1","task 2"]},{"title":"Exam Prep","tasks":["task 1","task 2","task 3"]},{"title":"Watch Out For","tasks":["task 1","task 2"]}],"tips":"one key tip"}\n\nMake it specific to the class. 3-5 tasks per phase.'}];
+    let text = await callAI(messages, 1000);    text = text.replace(/```json|```/g,'').trim();
     const system = JSON.parse(text);
     // Save the class
     const classes = load('custom-classes', []);
@@ -5071,6 +5077,7 @@ async function askHairAI() {
   el.style.display = 'block';
   el.innerHTML = '<div style="font-size:13px;color:var(--text2)">✨ Thinking...</div>';
   try {
+    const messages = [{role:'user', content: 'You are a hair care expert. Alisha is a young South Asian (Indian) woman with seborrheic dermatitis, hair thinning/loss, dark thick South Asian hair. She wants to regrow and strengthen her hair using oils and consistent care. She may have low ferritin (common cause of hair loss in young Indian women).\n\nQuestion: ' + q + '\n\nGive a specific practical answer. Reference South Asian hair care traditions where relevant (bhringraj, amla, neem, coconut oil). Be warm but evidence-based. Max 200 words.'}];
     const text = await callAI(messages, 500);    el.innerHTML = `<div style="background:var(--peach-light);border-radius:12px;padding:12px;font-size:13px;line-height:1.7;color:var(--text)">${text.replace(/\n/g,'<br>')}</div>`;
   } catch(e) {
     el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not load. Try again.</div>';
