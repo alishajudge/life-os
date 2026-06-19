@@ -2435,6 +2435,18 @@ function initHome() {
   let greet = h < 5 ? 'Good night' : h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : h < 21 ? 'Good evening' : 'Good night';
   const greetEl = document.getElementById('home-greeting');
   if (greetEl) greetEl.textContent = greet + ', Alisha 🌸';
+  const iconEl = document.getElementById('home-weather-icon');
+  if (iconEl) {
+    // Time-of-day icon (not real weather, just a nice visual cue for time of day)
+    if (h < 5) iconEl.textContent = '🌌';        // late night
+    else if (h < 7) iconEl.textContent = '🌅';   // early dawn
+    else if (h < 11) iconEl.textContent = '🌤';  // morning
+    else if (h < 16) iconEl.textContent = '☀️';  // midday
+    else if (h < 18) iconEl.textContent = '🌇';  // late afternoon
+    else if (h < 20) iconEl.textContent = '🌆';  // dusk
+    else if (h < 22) iconEl.textContent = '🌙';  // evening
+    else iconEl.textContent = '🌌';              // night
+  }
   const dateEl = document.getElementById('home-date');
   if (dateEl) dateEl.textContent = now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   const msgEl = document.getElementById('home-daily-msg');
