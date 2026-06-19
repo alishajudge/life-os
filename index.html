@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alisha's Life OS 🌸</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 :root {
   --pink: #e91e8c;
   --pink-light: #fce4f3;
@@ -22,7 +23,7 @@
   --bg: #fdf6fb;
   --card: #ffffff;
   --text: #1a1a2e;
-  --text2: #6b7280;
+  --text2: #556070;
   --text3: #9ca3af;
   --border: #f0e6f6;
   --radius: 16px;
@@ -30,7 +31,7 @@
   --shadow: 0 2px 12px rgba(233,30,140,0.08);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+body { font-size:15px; line-height:1.55; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
 /* NAV */
 nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); padding: 0 12px; display: flex; overflow-x: auto; gap: 2px; scrollbar-width: none; }
@@ -42,7 +43,7 @@ nav button:hover { background: var(--pink-light); border-radius: 8px 8px 0 0; }
 /* HEADER */
 .page-header { padding: 20px 16px 8px; }
 .page-header h1 { font-size: 22px; font-weight: 700; color: var(--text); }
-.page-header p { font-size: 13px; color: var(--text2); margin-top: 3px; }
+.page-header p { font-size: 15px; color: var(--text2); margin-top: 3px; }
 
 /* SECTIONS */
 section { display: none; }
@@ -50,28 +51,28 @@ section.active { display: block; padding-bottom: 80px; }
 
 /* CARDS */
 .card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); padding: 16px; margin: 0 12px 12px; box-shadow: var(--shadow); }
-.card-title { font-size: 13px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.card-title { font-size: 15px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
 
 /* PILLS / TAGS */
-.tag { display: inline-flex; align-items: center; gap: 4px; padding: 5px 11px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; border: 1.5px solid transparent; transition: all .15s; user-select: none; }
+.tag { display: inline-flex; align-items: center; gap: 4px; padding: 5px 11px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1.5px solid transparent; transition: all .15s; user-select: none; }
 .tag.active { border-color: currentColor; }
 .tag-grid { display: flex; flex-wrap: wrap; gap: 6px; }
 
 /* BUTTONS */
-.btn { padding: 10px 18px; border-radius: 10px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; transition: all .2s; }
+.btn { padding: 10px 18px; border-radius: 10px; border: none; cursor: pointer; font-size: 15px; font-weight: 700; transition: all .2s; }
 .btn-pink { background: var(--pink); color: white; }
 .btn-pink:hover { background: #c71882; }
 .btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text); }
 .btn-outline:hover { background: var(--pink-light); border-color: var(--pink-soft); }
-.btn-sm { padding: 6px 12px; font-size: 12px; border-radius: 8px; }
+.btn-sm { padding: 6px 12px; font-size: 13px; border-radius: 8px; }
 
 /* INPUTS */
 input[type=text], input[type=date], input[type=time], input[type=number], textarea, select {
-  width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; background: var(--card); color: var(--text); outline: none; transition: border .2s; font-family: inherit;
+  width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; background: var(--card); color: var(--text); outline: none; transition: border .2s; font-family: inherit;
 }
 input:focus, textarea:focus, select:focus { border-color: var(--pink); }
 textarea { resize: vertical; min-height: 80px; }
-label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; margin-bottom: 4px; }
+label { font-size: 15px; font-weight: 500; color: var(--text2); display: block; margin-bottom: 4px; }
 .form-group { margin-bottom: 12px; }
 
 /* PROGRESS BARS */
@@ -96,17 +97,17 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
 .task-item:last-child { border-bottom: none; }
 .task-check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; margin-top: 2px; }
 .task-check.done { background: var(--mint); border-color: var(--mint); color: white; }
-.task-text { flex: 1; font-size: 14px; line-height: 1.4; }
+.task-text { flex: 1; font-size: 15px; line-height: 1.4; }
 .task-text.done-text { text-decoration: line-through; color: var(--text3); }
 .task-meta { font-size: 11px; color: var(--text3); margin-top: 2px; }
-.task-badge { font-size: 10px; padding: 2px 7px; border-radius: 6px; font-weight: 600; }
+.task-badge { font-size: 10px; padding: 2px 7px; border-radius: 6px; font-weight: 700; }
 
 /* SCHEDULE BLOCKS */
 .time-block { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
 .time-block:last-child { border-bottom: none; }
-.time-label { font-size: 12px; color: var(--text3); min-width: 52px; padding-top: 2px; }
-.block-content { flex: 1; padding: 8px 12px; border-radius: 10px; font-size: 13px; line-height: 1.4; }
-.block-title { font-weight: 600; font-size: 13px; }
+.time-label { font-size: 13px; color: var(--text3); min-width: 52px; padding-top: 2px; }
+.block-content { flex: 1; padding: 8px 12px; border-radius: 10px; font-size: 15px; line-height: 1.4; }
+.block-title { font-weight: 700; font-size: 15px; }
 .block-sub { font-size: 11px; margin-top: 2px; opacity: .8; }
 
 /* STREAK DOTS */
@@ -122,15 +123,15 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
 
 /* CORE5 */
 .core5-item { margin-bottom: 14px; }
-.core5-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
-.core5-name { font-weight: 600; }
+.core5-label { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 5px; }
+.core5-name { font-weight: 700; }
 .core5-pct { color: var(--pink); font-weight: 700; }
 
 /* PROGRAMS TABLE */
-.prog-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.prog-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .prog-table th { text-align: left; padding: 6px 8px; background: var(--pink-light); font-size: 11px; color: var(--pink); border-radius: 6px; }
 .prog-table td { padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
-.status-badge { padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+.status-badge { padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; }
 .s-accepted { background: var(--mint-light); color: #065f46; }
 .s-declined { background: #fee2e2; color: #991b1b; }
 .s-waitlisted { background: var(--gold-light); color: #92400e; }
@@ -139,20 +140,20 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
 
 /* JOURNAL */
 .journal-prompt { background: var(--lavender-light); border-left: 3px solid var(--lavender); padding: 12px; border-radius: 0 10px 10px 0; margin-bottom: 10px; }
-.journal-prompt p { font-size: 13px; color: #5b21b6; font-style: italic; margin-bottom: 6px; }
+.journal-prompt p { font-size: 15px; color: #5b21b6; font-style: italic; margin-bottom: 6px; }
 
 /* BOOK/MOVIE */
 .media-card { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
 .media-cover { width: 44px; height: 60px; border-radius: 6px; background: var(--pink-light); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
 .media-info { flex: 1; }
-.media-title { font-weight: 600; font-size: 14px; }
-.media-meta { font-size: 12px; color: var(--text2); margin-top: 2px; }
-.stars { color: var(--gold); font-size: 12px; }
+.media-title { font-weight: 700; font-size: 15px; }
+.media-meta { font-size: 13px; color: var(--text2); margin-top: 2px; }
+.stars { color: var(--gold); font-size: 13px; }
 
 /* SPENDING */
 .spend-item { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); }
-.spend-cat { display: flex; align-items: center; gap: 8px; font-size: 14px; }
-.spend-amount { font-size: 14px; font-weight: 600; color: var(--text); }
+.spend-cat { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.spend-amount { font-size: 15px; font-weight: 700; color: var(--text); }
 
 /* BEAUTY ROUTINE */
 .routine-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
@@ -162,7 +163,7 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
 /* TABS within section */
 .inner-tabs { display: flex; gap: 6px; padding: 0 12px; margin-bottom: 4px; overflow-x: auto; scrollbar-width: none; }
 .inner-tabs::-webkit-scrollbar { display: none; }
-.itab { padding: 7px 14px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--card); font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all .2s; }
+.itab { padding: 7px 14px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--card); font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all .2s; }
 .itab.active { background: var(--pink); color: white; border-color: var(--pink); }
 .itab-content { display: none; }
 .itab-content.active { display: block; }
@@ -174,8 +175,8 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
 
 /* SHADOWING LOG */
 .shadow-row { padding: 10px 0; border-bottom: 1px solid var(--border); }
-.shadow-dr { font-weight: 600; font-size: 14px; }
-.shadow-meta { font-size: 12px; color: var(--text2); margin-top: 2px; }
+.shadow-dr { font-weight: 700; font-size: 15px; }
+.shadow-meta { font-size: 13px; color: var(--text2); margin-top: 2px; }
 
 /* FLOATING ADD */
 .fab { position: fixed; bottom: 20px; right: 20px; width: 52px; height: 52px; border-radius: 50%; background: var(--pink); color: white; border: none; font-size: 26px; cursor: pointer; box-shadow: 0 4px 16px rgba(233,30,140,.35); display: flex; align-items: center; justify-content: center; z-index: 99; transition: all .2s; }
@@ -191,17 +192,17 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
 .modal-actions button { flex: 1; }
 
 /* TOAST */
-.toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #1a1a2e; color: white; padding: 10px 20px; border-radius: 20px; font-size: 13px; font-weight: 500; z-index: 300; opacity: 0; transition: opacity .3s; pointer-events: none; }
+.toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #1a1a2e; color: white; padding: 10px 20px; border-radius: 20px; font-size: 15px; font-weight: 500; z-index: 300; opacity: 0; transition: opacity .3s; pointer-events: none; }
 .toast.show { opacity: 1; }
 
 /* RESTART */
 .restart-hero { text-align: center; padding: 30px 20px 20px; }
 .restart-hero .big-emoji { font-size: 56px; margin-bottom: 8px; }
 .restart-hero h2 { font-size: 22px; font-weight: 700; color: var(--pink); }
-.restart-hero p { font-size: 14px; color: var(--text2); margin-top: 6px; max-width: 280px; margin-left: auto; margin-right: auto; }
+.restart-hero p { font-size: 15px; color: var(--text2); margin-top: 6px; max-width: 280px; margin-left: auto; margin-right: auto; }
 .energy-btn { padding: 10px 14px; border-radius: 12px; border: 2px solid var(--border); background: var(--card); cursor: pointer; font-size: 20px; transition: all .2s; }
 .energy-btn.sel { border-color: var(--pink); background: var(--pink-light); }
-.generated-schedule .block { padding: 8px 12px; margin-bottom: 6px; border-radius: 10px; font-size: 13px; }
+.generated-schedule .block { padding: 8px 12px; margin-bottom: 6px; border-radius: 10px; font-size: 15px; }
 
 .study-tab-content { display: none; }
 .study-tab-content.active { display: block; }
@@ -1540,6 +1541,7 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
     <div class="itab active" onclick="showItab('health','symptoms')">🤒 Symptoms</div>
     <div class="itab" onclick="showItab('health','food')">🍽 Food Log</div>
     <div class="itab" onclick="showItab('health','recipes')">🍳 Recipes</div>
+    <div class="itab" onclick="showItab('health','baking')">🧁 Baking</div>
     <div class="itab" onclick="showItab('health','period')">🌸 Period</div>
     <div class="itab" onclick="showItab('health','fact')">💡 Health Fact</div>
   </div>
@@ -1601,7 +1603,7 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
         </div>
         <div class="form-group" style="margin:0"><label>Date</label><input type="date" id="food-date"></div>
       </div>
-      <div class="form-group" style="margin-top:10px"><label>What did you eat?</label><input type="text" id="food-name" placeholder="e.g. dal chawal, chicken salad, smoothie..."></div>
+      <div class="form-group" style="margin-top:10px"><label>What did you eat?</label><input type="text" id="food-name" placeholder="e.g. chicken salad, smoothie, pasta, sandwich..."></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <div class="form-group" style="margin:0"><label>How did it make you feel?</label>
           <select id="food-feel"><option>😊 Great</option><option>🙂 Good</option><option>😐 Okay</option><option>🤢 Not great</option><option>😖 Bad/Sick</option></select>
@@ -1626,6 +1628,21 @@ label { font-size: 13px; font-weight: 500; color: var(--text2); display: block; 
     <div class="card">
       <div class="card-title">Saved Recipes</div>
       <div id="recipe-list"></div>
+    </div>
+  </div>
+
+  <!-- BAKING -->
+  <div id="itab-baking" class="itab-content">
+    <div class="card" style="background:linear-gradient(135deg,var(--pink-light),var(--peach-light));border:none">
+      <div class="card-title" style="margin-bottom:6px">🧁 AI Baking Idea Generator</div>
+      <div style="font-size:13px;color:var(--text2);margin-bottom:10px">For when you want to bake for fun, family, friends, or a cozy reset. Tell it what ingredients/vibe you want.</div>
+      <input type="text" id="baking-prompt" placeholder="e.g. brownies, banana bread, cookies, high-protein dessert, easy late-night baking..." style="margin-bottom:8px">
+      <button class="btn btn-pink" style="width:100%" onclick="generateBakingIdea()">✨ Generate Baking Idea</button>
+      <div id="baking-output" style="margin-top:12px;display:none"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Saved Baking Ideas</div>
+      <div id="baking-list"></div>
     </div>
   </div>
 
@@ -2153,43 +2170,84 @@ function load(key, def) {
   catch(e) { return def; }
 }
 async function syncToSupabase(key, val) {
-  await fetch(SUPABASE_URL + '/rest/v1/userdata', {
-    method: 'POST',
-    headers: {
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-      'Content-Type': 'application/json',
-      'Prefer': 'resolution=merge-duplicates'
-    },
-    body: JSON.stringify({ key: 'alisha_' + key, value: JSON.stringify(val) })
-  });
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/userdata', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'resolution=merge-duplicates,return=minimal'
+      },
+      body: JSON.stringify({ key: 'alisha_' + key, value: JSON.stringify(val) })
+    });
+    if (!res.ok) console.warn('Supabase sync error:', res.status, await res.text());
+  } catch(e) { console.warn('Supabase sync failed:', e.message); }
 }
 async function pullFromSupabase() {
   if (!CONFIGURED) return;
   try {
-    const res = await fetch(SUPABASE_URL + '/rest/v1/userdata?select=key,value', {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/userdata?select=key,value&limit=500', {
       headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY }
     });
-    if (!res.ok) return;
+    if (!res.ok) { console.warn('Supabase pull failed:', res.status); return; }
     const rows = await res.json();
     if (!Array.isArray(rows) || !rows.length) return;
-    rows.forEach(row => { try { localStorage.setItem(row.key, row.value); } catch(e) {} });
-    const b = document.getElementById('sync-banner');
-    if (b) { b.textContent = '☁️ Synced from cloud — refreshing...'; b.style.display='block'; }
-    setTimeout(() => location.reload(), 1200);
-  } catch(e) {}
+    let changed = 0;
+    rows.forEach(row => {
+      try {
+        if (localStorage.getItem(row.key) !== row.value) {
+          localStorage.setItem(row.key, row.value);
+          changed++;
+        }
+      } catch(e) {}
+    });
+    if (changed > 0) {
+      const b = document.getElementById('sync-banner');
+      if (b) { b.textContent = '☁️ Synced ' + changed + ' items from cloud — refreshing...'; b.style.display='block'; }
+      setTimeout(() => location.reload(), 1200);
+    }
+  } catch(e) { console.warn('Supabase pull error:', e.message); }
 }
 async function callAI(messages, maxTokens, system) {
   const url = CF_WORKER_URL !== 'YOUR_CF_WORKER_URL' ? CF_WORKER_URL : 'http://localhost:3001/api';
-  const body = { model: 'claude-sonnet-4-6', max_tokens: maxTokens || 600, messages };
-  if (system) body.system = system;
+
+  // GroqCloud uses the OpenAI-compatible chat format. Some older versions of this
+  // app/worker returned Anthropic-style {content:[{text}]} responses, so this
+  // function now supports BOTH without breaking the other AI tools.
+  const groqModel = localStorage.getItem('alisha_ai_model') || 'llama-3.3-70b-versatile';
+  const finalMessages = system ? [{ role: 'system', content: system }, ...messages] : messages;
+  const body = {
+    model: groqModel,
+    messages: finalMessages,
+    max_tokens: maxTokens || 600,
+    temperature: 0.4
+  };
+
   const res = await fetch(url, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
-  if (!res.ok) throw new Error('HTTP ' + res.status);
-  const data = await res.json();
-  return data.content?.[0]?.text || '';
+
+  const raw = await res.text();
+  if (!res.ok) throw new Error('AI request failed: HTTP ' + res.status + ' — ' + raw.slice(0, 300));
+
+  let data;
+  try { data = JSON.parse(raw); }
+  catch(e) { return raw.trim(); }
+
+  // Groq / OpenAI format
+  if (data.choices?.[0]?.message?.content) return data.choices[0].message.content;
+  if (data.choices?.[0]?.text) return data.choices[0].text;
+
+  // Anthropic-style format, preserved for compatibility with older worker versions
+  if (data.content?.[0]?.text) return data.content[0].text;
+  if (typeof data.content === 'string') return data.content;
+  if (data.output_text) return data.output_text;
+  if (data.error?.message) throw new Error(data.error.message);
+
+  throw new Error('AI response format not recognized: ' + raw.slice(0, 300));
 }
 
 const todayKey = () => new Date().toISOString().slice(0,10);
@@ -2576,63 +2634,230 @@ function setEnergy(n, el) {
   el.classList.add('sel');
 }
 
-function generateSchedule() {
-  const wake = document.getElementById('sch-wake').value || '08:00';
-  const p1 = document.getElementById('sch-p1').value;
-  const p2 = document.getElementById('sch-p2').value;
-  const p3 = document.getElementById('sch-p3').value;
-  const fixed = document.getElementById('sch-fixed').value;
-  const health = document.getElementById('sch-health').value;
+// Smart time helpers for schedule + restart
+function toMin(h, m=0) { return h * 60 + m; }
+function clampDay(mins) { return ((mins % 1440) + 1440) % 1440; }
+function fmtMin(mins) {
+  const hh = Math.floor(clampDay(mins) / 60);
+  const mm = clampDay(mins) % 60;
+  return (hh % 12 || 12) + ':' + String(mm).padStart(2, '0') + (hh < 12 ? 'am' : 'pm');
+}
+function rangeLabel(s, e) { return fmtMin(s) + ' – ' + fmtMin(e); }
+function parseClock(raw, fallbackMeridiem=null) {
+  if (!raw) return null;
+  const m = String(raw).trim().toLowerCase().match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/);
+  if (!m) return null;
+  let h = parseInt(m[1], 10);
+  const min = parseInt(m[2] || '0', 10);
+  let mer = m[3] || fallbackMeridiem;
+  if (mer === 'pm' && h !== 12) h += 12;
+  if (mer === 'am' && h === 12) h = 0;
+  return toMin(h, min);
+}
+function parseFixedCommitments(text) {
+  if (!text) return [];
+  const results = [];
+  const chunks = text.split(/[,;\n]+/).map(s => s.trim()).filter(Boolean);
+  chunks.forEach((chunk, idx) => {
+    const re = /(?:(.*?)\s+(?:from|at)\s+)?(\d{1,2}(?::\d{2})?\s*(?:am|pm)?)\s*(?:-|–|—|to)\s*(\d{1,2}(?::\d{2})?\s*(?:am|pm)?)/i;
+    const m = chunk.match(re);
+    if (!m) return;
+    let title = (m[1] || '').replace(/^(and|then)\s+/i,'').trim();
+    if (!title) title = chunk.replace(m[2], '').replace(m[3], '').replace(/from|at|-|–|—|to/gi,'').trim() || 'Fixed commitment';
+    const endMer = (m[3].toLowerCase().match(/(am|pm)/)||[])[1] || null;
+    const startMer = (m[2].toLowerCase().match(/(am|pm)/)||[])[1] || null;
+    let start = parseClock(m[2], startMer || endMer);
+    let end = parseClock(m[3], endMer || startMer);
 
-  const [wh, wm] = wake.split(':').map(Number);
-  const blocks = [];
-  const addBlock = (h, m, dur, title, sub, color) => {
-    const endH = Math.floor((h*60+m+dur)/60);
-    const endM = (h*60+m+dur) % 60;
-    const fmt = (hh,mm) => `${hh%12||12}:${String(mm).padStart(2,'0')}${hh<12?'am':'pm'}`;
-    blocks.push({ time: fmt(h,m) + ' – ' + fmt(endH,endM), title, sub, color, endH, endM });
-    return endH * 60 + endM;
-  };
-
-  let cur = wh * 60 + wm;
-  const h = () => Math.floor(cur/60);
-  const m = () => cur % 60;
-
-  const colorMap = {pink:'var(--pink-light)',mint:'var(--mint-light)',sky:'var(--sky-light)',gold:'var(--gold-light)',lavender:'var(--lavender-light)',peach:'var(--peach-light)'};
-
-  cur = addBlock(h(),m(), 30, '🌅 Morning Routine', 'Wake + hygiene + skincare + EAT (stomach first!)', 'pink');
-  cur = addBlock(h(),m(), 20, '📓 Journal + Prayer', 'Gratitude • Identity • Surrender to Waheguru • Top 3', 'lavender');
-  if (schedEnergy >= 2) {
-    cur = addBlock(h(),m(), p1 ? 90 : 60, '🔥 Block 1 — Deep Work', p1 || 'Study / Most important task', 'sky');
-    cur = addBlock(h(),m(), 15, '☕ Break + Snack', 'Move, water, stretch', 'mint');
-  }
-  if (fixed) cur = addBlock(h(),m(), 90, '📅 Fixed Commitment', fixed.slice(0,60), 'gold');
-  cur = addBlock(h(),m(), 30, '🍽 Lunch', 'Real meal — sit down, no screens', 'peach');
-  if (schedEnergy >= 2) {
-    cur = addBlock(h(),m(), p2 ? 75 : 60, '⚡ Block 2', p2 || 'Study / Priority 2', 'sky');
-    cur = addBlock(h(),m(), 15, '💧 Break', 'Walk, water, reset', 'mint');
-  }
-  if (schedEnergy >= 1) {
-    cur = addBlock(h(),m(), p3 ? 60 : 45, '💡 Block 3', p3 || 'Emails / Admin / Priority 3', 'sky');
-  }
-  cur = addBlock(h(),m(), 30, '🌟 Joy Block', 'Crochet / reading / badminton / anything you love', 'pink');
-  cur = addBlock(h(),m(), 30, '🍽 Dinner', 'Eat well', 'peach');
-  if (schedEnergy >= 2) cur = addBlock(h(),m(), 30, '🦷 Dental Task', 'One dental school task from your must-do list', 'sky');
-  cur = addBlock(h(),m(), 30, '🌙 Night Routine', 'Skincare • Brush/floss • Tomorrow\'s top 3 • Wind down', 'lavender');
-  cur = addBlock(h(),m(), 0, '😴 Bedtime', 'Aim for 7-8 hours', 'mint');
-
-  document.getElementById('schedule-output').innerHTML = blocks.map(b => `
+    // Common phrase: "10-12pm" usually means 10am-12pm, not 10pm-midnight.
+    if (!startMer && endMer === 'pm') {
+      const sh = parseInt(m[2],10), eh = parseInt(m[3],10);
+      if (sh >= 8 && eh <= 12) start = toMin(sh, (m[2].match(/:(\d{2})/)||[])[1] ? parseInt((m[2].match(/:(\d{2})/)||[])[1]) : 0);
+    }
+    // If start/end are equal or backwards, assume it crosses noon/evening only if reasonable.
+    if (end <= start) end += 12 * 60;
+    if (end - start > 8 * 60) end = start + 60; // protect against wild parse errors
+    results.push({start, end, title: title || `Fixed commitment ${idx+1}`, source: chunk});
+  });
+  return results.sort((a,b)=>a.start-b.start);
+}
+function blockHTML(blocks, extra='') {
+  const colorMap = {pink:'var(--pink-light)',mint:'var(--mint-light)',sky:'var(--sky-light)',gold:'var(--gold-light)',lavender:'var(--lavender-light)',peach:'var(--peach-light)',gray:'#f3f4f6'};
+  return extra + blocks.map(b => `
     <div class="time-block">
       <div class="time-label">${b.time}</div>
-      <div class="block-content" style="background:${colorMap[b.color]||'var(--border)'}">
+      <div class="block-content" style="background:${colorMap[b.color]||b.color||'var(--border)'}">
         <div class="block-title">${b.title}</div>
-        <div class="block-sub">${b.sub}</div>
+        <div class="block-sub">${b.sub||''}</div>
       </div>
     </div>
   `).join('');
+}
+
+function generateSchedule() {
+  const wake = document.getElementById('sch-wake').value || '08:00';
+  const p1 = document.getElementById('sch-p1').value.trim();
+  const p2 = document.getElementById('sch-p2').value.trim();
+  const p3 = document.getElementById('sch-p3').value.trim();
+  const fixedRaw = document.getElementById('sch-fixed').value.trim();
+  const health = document.getElementById('sch-health').value.trim();
+
+  const [wh, wm] = wake.split(':').map(Number);
+  let wakeMin = toMin(wh, wm || 0);
+  const fixed = parseFixedCommitments(fixedRaw);
+  const lastFixedEnd = fixed.length ? Math.max(...fixed.map(f=>f.end)) : wakeMin;
+  let bedtime = wakeMin <= toMin(9,30) ? toMin(23,0) : wakeMin <= toMin(11,30) ? toMin(23,30) : toMin(24,0);
+  if (lastFixedEnd > bedtime - 45) bedtime = Math.min(toMin(25,0), lastFixedEnd + 120);
+
+  let cur = wakeMin;
+  let fi = 0;
+  const blocks = [];
+  const desired = [];
+  const addDesired = (dur, title, sub, color) => desired.push({dur,title,sub,color});
+
+  const energyName = schedEnergy === 1 ? 'Drained' : schedEnergy === 2 ? 'Medium' : 'Energized';
+  const routineDur = schedEnergy === 1 ? 25 : 35;
+  addDesired(routineDur, '🌅 Morning Routine', 'Bathroom • brush teeth • tongue scrape • skincare • water • breakfast ASAP', 'pink');
+  addDesired(schedEnergy === 1 ? 10 : 20, '📓 Journal + Prayer', '3 gratitudes • identity • surrender to Waheguru • top 3', 'lavender');
+
+  if (p1) addDesired(schedEnergy === 1 ? 45 : schedEnergy === 2 ? 75 : 95, '🔥 Priority 1', p1, 'sky');
+  if (schedEnergy >= 2 && p2) addDesired(schedEnergy === 2 ? 55 : 75, '⚡ Priority 2', p2, 'sky');
+  if (schedEnergy >= 3 && p3) addDesired(60, '💡 Priority 3', p3, 'sky');
+  if (schedEnergy === 1 && p2) addDesired(25, '🧩 Tiny Step', p2 + ' — just make progress, not perfection', 'sky');
+
+  addDesired(schedEnergy === 1 ? 12 : schedEnergy === 2 ? 25 : 45,
+    schedEnergy === 3 ? '🏋️ Workout / Sport' : '🧘 Stretch + Walk',
+    schedEnergy === 3 ? 'Strength, run, badminton, basketball, or long walk' : 'Calves • hips • hamstrings • shoulders • easy walk', 'mint');
+
+  if (schedEnergy >= 2) addDesired(25, '🦷 Dental / Admin Task', 'One email, form, tuition, passport step, or dental-school master doc update', 'sky');
+  if (schedEnergy >= 3) addDesired(35, '🧹 Reset Block', 'Clean room, pack, laundry, prep clothes, or shopping list', 'peach');
+
+  addDesired(schedEnergy === 1 ? 20 : 30, '🌟 Joy Block', 'Read • crochet • henna • Netflix • Miniverse • badminton', 'pink');
+  addDesired(schedEnergy === 1 ? 20 : 30, '🌙 Night Routine', 'Remove sunscreen/makeup • wash face • moisturize • brush/floss • tomorrow top 3', 'lavender');
+
+  function pushBlock(start, end, title, sub, color) {
+    if (end <= start) return;
+    blocks.push({time: rangeLabel(start,end), title, sub, color, start, end});
+    cur = end;
+  }
+  function pushFixed(f) {
+    pushBlock(f.start, f.end, '📅 ' + f.title, f.source, 'gold');
+  }
+  function nextFixedStart() { return fi < fixed.length ? fixed[fi].start : bedtime; }
+  function handleDueFixeds() {
+    while (fi < fixed.length && fixed[fi].start <= cur + 1) {
+      if (cur < fixed[fi].start) pushBlock(cur, fixed[fi].start, '🧺 Buffer', 'Transition, bathroom, water, set up', 'gray');
+      pushFixed(fixed[fi]);
+      cur = Math.max(cur, fixed[fi].end);
+      fi++;
+    }
+  }
+  function maybeMeal(gapEnd) {
+    const hasLunch = blocks.some(b => b.title.includes('Lunch'));
+    const hasDinner = blocks.some(b => b.title.includes('Dinner'));
+    if (!hasLunch && cur < gapEnd && (cur >= toMin(11,30) || gapEnd >= toMin(12,30))) {
+      const s = Math.max(cur, Math.min(toMin(12,15), gapEnd - 30));
+      if (s > cur && s - cur >= 10) pushBlock(cur, s, '🧺 Buffer', 'Transition, bathroom, water', 'gray');
+      if (gapEnd - cur >= 25) { pushBlock(cur, Math.min(cur + 35, gapEnd), '🍽 Lunch', 'Protein + carb + veggie. Sit down if possible.', 'peach'); return true; }
+    }
+    if (!hasDinner && cur < gapEnd && (cur >= toMin(17,30) || gapEnd >= toMin(18,30))) {
+      const s = Math.max(cur, Math.min(toMin(18,30), gapEnd - 35));
+      if (s > cur && s - cur >= 10) pushBlock(cur, s, '🧺 Buffer', 'Transition, bathroom, water', 'gray');
+      if (gapEnd - cur >= 30) { pushBlock(cur, Math.min(cur + 45, gapEnd), '🍽 Dinner', 'Balanced plate + hydrate. No guilt, just eat.', 'peach'); return true; }
+    }
+    return false;
+  }
+
+  // If a commitment starts exactly at wake time, preserve it and move routine after.
+  handleDueFixeds();
+  let safety = 0;
+  while (cur < bedtime && safety++ < 80) {
+    handleDueFixeds();
+    const gapEnd = nextFixedStart();
+    if (gapEnd <= cur) { handleDueFixeds(); continue; }
+    const gap = gapEnd - cur;
+
+    if (maybeMeal(gapEnd)) continue;
+
+    let nextTask = desired.shift();
+    if (!nextTask) {
+      if (gap >= 20) pushBlock(cur, Math.min(gapEnd, cur + Math.min(45, gap)), '🧺 Buffer / Flex', 'Catch up, commute, bathroom, water, or nothing if you need rest', 'gray');
+      else cur = gapEnd;
+      continue;
+    }
+
+    // Habit-window intelligence: do not shove morning/exercise habits into absurd late slots.
+    const tooLateForMorning = cur > Math.min(wakeMin + 4 * 60, toMin(13, 0));
+    const evening = cur >= toMin(17, 0);
+    const lateEvening = cur >= toMin(20, 30);
+    const night = cur >= toMin(22, 0);
+
+    if (nextTask.title.includes('Morning Routine') && tooLateForMorning) {
+      // If the day started during fixed commitments, a quick reset is better than a fake 7pm morning routine.
+      nextTask = {
+        dur: evening ? 12 : 18,
+        title: '🔁 Restart Reset',
+        sub: 'Bathroom • water • brush teeth if needed • quick tidy • choose the next right thing',
+        color: 'pink'
+      };
+    }
+
+    if (nextTask.title.includes('Journal + Prayer') && evening) {
+      nextTask = {
+        ...nextTask,
+        title: '🙏 Prayer + Reflection',
+        sub: 'Gratitude • surrender to Waheguru • reset your mind for the rest of today',
+        dur: Math.min(nextTask.dur, 20)
+      };
+    }
+
+    if ((nextTask.title.includes('Workout') || nextTask.title.includes('Stretch')) && lateEvening) {
+      if (night) {
+        // At 10pm+, do not schedule a workout. Protect sleep and make tomorrow easier.
+        nextTask = {
+          dur: 10,
+          title: '🧘 Gentle Stretch Only',
+          sub: 'Low-energy mobility, calves/hips/neck. Real workout moves to tomorrow before 7pm.',
+          color: 'mint'
+        };
+      } else {
+        nextTask = {
+          dur: 15,
+          title: '🚶 Evening Walk / Stretch',
+          sub: 'Habit-friendly movement only. No intense workout this late.',
+          color: 'mint'
+        };
+      }
+    }
+
+    // If a real workout is coming up but the only available slot starts after 8:30pm, keep it gentle.
+    if (nextTask.dur <= gap) {
+      pushBlock(cur, cur + nextTask.dur, nextTask.title, nextTask.sub, nextTask.color);
+    } else if (gap >= 25) {
+      // Put a shortened version instead of causing overlap.
+      pushBlock(cur, gapEnd, nextTask.title + ' (shortened)', nextTask.sub + ' — use the available time only', nextTask.color);
+    } else {
+      pushBlock(cur, gapEnd, '🧺 Buffer', 'Bathroom • water • transition', 'gray');
+      desired.unshift(nextTask);
+    }
+  }
+
+  // Add skipped fixed commitments if user woke after them, as a note rather than silently losing them.
+  const missed = fixed.filter(f => f.end <= wakeMin);
+  const remaining = desired.filter(d => !d.title.includes('Night Routine'));
+  const extra = `
+    <div style="background:var(--lavender-light);border-radius:12px;padding:12px;margin-bottom:12px;font-size:13px;line-height:1.6">
+      <strong>${energyName} plan:</strong> ${schedEnergy===1?'minimum viable day — must-dos, recovery, and no shame.':schedEnergy===2?'balanced day — priorities plus care routines.':'ambitious day — deeper work, movement, and extra reset tasks.'}<br>
+      <strong>Fixed commitments found:</strong> ${fixed.length ? fixed.map(f=>`${f.title} ${rangeLabel(f.start,f.end)}`).join(' • ') : 'none'}<br>
+      ${health ? `<strong>Health note:</strong> ${health}<br>` : ''}
+      ${missed.length ? `<strong>Already passed:</strong> ${missed.map(f=>f.title).join(', ')}<br>` : ''}
+      ${remaining.length ? `<strong>If time runs out, move these later:</strong> ${remaining.map(r=>r.title.replace(/^[^ ]+ /,'')).join(', ')}` : '<strong>Capacity check:</strong> this plan fits without pretending you have infinite time.'}
+    </div>`;
+
+  document.getElementById('schedule-output').innerHTML = blockHTML(blocks, extra);
   document.getElementById('generated-day').style.display = 'block';
   document.getElementById('generated-day').scrollIntoView({behavior:'smooth'});
-  toast('Schedule built! 🌸');
+  toast('Smart schedule built 🌸');
 }
 
 function renderWeeklyTemplate() {
@@ -3075,7 +3300,7 @@ function renderShadowLog() {
 }
 
 // ======= RESTART =======
-let restartEnergyVal = '';
+let restartEnergyVal = 'Okay';
 function setRestartEnergy(el) {
   document.querySelectorAll('#restart-energy .energy-btn').forEach(b => b.classList.remove('sel'));
   el.classList.add('sel');
@@ -3084,32 +3309,57 @@ function setRestartEnergy(el) {
 
 function buildRestartPlan() {
   const time = document.getElementById('restart-time').value || new Date().toTimeString().slice(0,5);
-  const one = document.getElementById('restart-one').value;
-  const small = document.getElementById('restart-small').value;
+  const one = (document.getElementById('restart-one').value || 'Your most important task').trim();
+  const small = (document.getElementById('restart-small').value || 'Take one breath and drink water').trim();
   const [h, m] = time.split(':').map(Number);
-  let cur = h * 60 + m;
-  const fmt = (mins) => {
-    const hh = Math.floor(mins / 60) % 24;
-    const mm = mins % 60;
-    return (hh % 12 || 12) + ':' + String(mm).padStart(2, '0') + (hh < 12 ? 'am' : 'pm');
+  let cur = toMin(h, m || 0);
+  const energyText = (restartEnergyVal || '').toLowerCase();
+  const drained = energyText.includes('drained') || energyText.includes('low');
+  const energized = energyText.includes('energized') || energyText.includes('good');
+  let bedtime = cur < toMin(20,0) ? toMin(23,30) : cur < toMin(22,30) ? toMin(24,0) : cur + 120;
+  if (bedtime <= cur) bedtime += 1440;
+
+  const blocks = [];
+  const push = (dur, title, sub, color) => {
+    if (cur >= bedtime) return;
+    const end = Math.min(cur + dur, bedtime);
+    blocks.push({time: rangeLabel(cur, end), title, sub, color});
+    cur = end;
   };
-  const blocks = [
-    {t:fmt(cur),      text:'🌊 Right now: ' + (small || 'Take one breath. Youre okay.'), color:'var(--lavender-light)'},
-    {t:fmt(cur+=15),  text:'💧 Drink water + eat something if needed', color:'var(--mint-light)'},
-    {t:fmt(cur+=15),  text:'🎯 Focus block: ' + (one || 'Your most important task'), color:'var(--sky-light)'},
-    {t:fmt(cur+=90),  text:'☕ Break — 10 min walk or stretch', color:'var(--mint-light)'},
-    {t:fmt(cur+=15),  text:'⚡ Second block — keep going', color:'var(--sky-light)'},
-    {t:fmt(cur+=90),  text:'🌙 Wind down — skincare + tomorrows top 3', color:'var(--pink-light)'},
-  ];
-  document.getElementById('restart-schedule').innerHTML = blocks.map(b => `
-    <div class="time-block">
-      <div class="time-label">${b.t}</div>
-      <div class="block-content" style="background:${b.color};font-size:14px;font-weight:500">${b.text}</div>
-    </div>
-  `).join('');
+
+  push(15, '🌊 Right now', small, 'lavender');
+  push(20, '💧 Body reset', 'Water + bathroom + eat something if your stomach needs it', 'mint');
+
+  if (drained) {
+    push(35, '🎯 Minimum focus block', one + ' — only the next easiest step', 'sky');
+    push(15, '☕ Recovery break', 'Walk, stretch, breathe, no shame', 'mint');
+    push(35, '🧩 Second tiny block', 'Continue only if helpful; otherwise organize materials for tomorrow', 'sky');
+    push(25, '🙏 Prayer + calm reset', 'Ardas, gratitude, or Kirtan', 'lavender');
+    push(30, '🌙 Night routine', 'Skincare • brush/floss • tomorrow top 3', 'pink');
+  } else if (energized) {
+    push(80, '🎯 Deep focus block', one, 'sky');
+    push(15, '☕ Break', 'Walk + water + stretch', 'mint');
+    push(60, '⚡ Second block', 'Pack clothes, admin, flashcards, or the next urgent task', 'sky');
+    push(35, '🏋️ Movement', 'Workout, walk, badminton, basketball, or stretch', 'mint');
+    push(30, '🌟 Joy block', 'Read, crochet, henna, Netflix, or Miniverse guilt-free', 'pink');
+    push(30, '🌙 Night routine', 'Skincare • brush/floss • tomorrow top 3', 'lavender');
+  } else {
+    push(60, '🎯 Focus block', one, 'sky');
+    push(15, '☕ Break', 'Walk, stretch, water', 'mint');
+    push(45, '⚡ Second block', 'Keep going or pack clothes/materials', 'sky');
+    push(25, '🙏 Prayer / reset', 'Gratitude + surrender to Waheguru', 'lavender');
+    push(30, '🌙 Night routine', 'Skincare • brush/floss • tomorrow top 3', 'pink');
+  }
+
+  // Never show a ridiculous early bedtime; show realistic shutdown instead.
+  if (cur < bedtime - 30) push(Math.min(45, bedtime-cur), '🧺 Flex / buffer', 'Catch up, prep, or rest', 'gray');
+  blocks.push({time: fmtMin(bedtime), title:'😴 Target sleep window', sub:'Aim for 7–9 hours. This is a target, not a random forced 5pm bedtime.', color:'mint'});
+
+  const header = `<div style="background:var(--lavender-light);border-radius:12px;padding:12px;margin-bottom:12px;font-size:13px;line-height:1.6"><strong>Restart mode:</strong> ${drained?'Drained — smaller blocks and recovery.':energized?'Energized — bigger blocks and extra movement.':'Balanced — realistic focus without overload.'}<br><strong>Priority:</strong> ${one}</div>`;
+  document.getElementById('restart-schedule').innerHTML = blockHTML(blocks, header);
   document.getElementById('restart-output').style.display = 'block';
   document.getElementById('restart-output').scrollIntoView({behavior:'smooth'});
-  toast('Youve got this 🌸');
+  toast('Smart restart built 🌸');
 }
 
 // ======= STUDY CHECKLIST =======
@@ -3250,7 +3500,7 @@ async function generateRecipe() {
   el.style.display = 'block';
   el.innerHTML = '<div style="font-size:13px;color:var(--text2)">Getting recipe idea...</div>';
   try {
-    const messages = [{role:'user', content: 'You are a nutrition-aware recipe assistant for Alisha, a young Indian-American college student doing strength training. She enjoys Indian and American food. Her highly-rated foods include: ' + (highRated || 'dal, chicken, salads, smoothies') + '. Request: "' + (prompt || 'Quick healthy meal idea') + '". Give a short practical recipe with name, why it suits her health goals, ingredients, and 4-5 simple steps. Under 300 words. Encouraging tone.'}];
+    const messages = [{role:'user', content: 'You are a nutrition-aware recipe assistant for Alisha, a college student doing strength training. IMPORTANT: do NOT default to Indian, Punjabi, masala, curry, dal, roti, or "Indian twist" recipes unless she explicitly asks for that. She usually wants realistic everyday American/college-style meals like sandwiches, bowls, pasta, salads, wraps, tacos, smoothies, eggs, chicken, potatoes, snacks, etc. Her highly-rated foods include: ' + (highRated || 'chicken, salads, smoothies, pasta, sandwiches') + '. Request: "' + (prompt || 'Quick healthy meal idea') + '". Give a short practical recipe with name, why it suits her health goals, ingredients, and 4-5 simple steps. Under 300 words. Encouraging tone.'}];
     const text = await callAI(messages, 600);    el.innerHTML = '<div style="background:white;border-radius:12px;padding:14px;font-size:13px;line-height:1.7;color:var(--text)">' + text.replace(/\n/g,'<br>') + '</div><button class="btn btn-outline btn-sm" style="width:100%;margin-top:8px" onclick="saveRecipe()">💾 Save Recipe</button>';
     window._lastRecipe = text;
   } catch(e) {
@@ -3282,6 +3532,51 @@ function renderRecipes() {
 }
 function deleteRecipe(i) {
   const r = load('recipes', []); r.splice(i,1); save('recipes', r); renderRecipes();
+}
+
+// ======= BAKING IDEA GENERATOR (AI) =======
+async function generateBakingIdea() {
+  const prompt = document.getElementById('baking-prompt').value;
+  const btn = event.target;
+  btn.textContent = '✨ Generating...';
+  btn.disabled = true;
+  const el = document.getElementById('baking-output');
+  el.style.display = 'block';
+  el.innerHTML = '<div style="font-size:13px;color:var(--text2)">Getting baking idea...</div>';
+  try {
+    const messages = [{role:'user', content: 'You are a cozy, practical baking assistant for Alisha, a college student who loves baking. IMPORTANT: do NOT default to Indian/Punjabi flavors or "Indian twist" ideas unless she explicitly asks. Suggest mainstream baking ideas: cookies, brownies, banana bread, muffins, cinnamon rolls, cakes, bars, cupcakes, breads, protein desserts, no-bake treats, etc. Request: "' + (prompt || 'Easy fun baking idea') + '". Give: 1) recipe name 2) why it fits the vibe 3) ingredients 4) simple steps 5) time estimate 6) storage or sharing tip. If it can be made healthier/high-protein, include one optional swap. Under 350 words, warm and fun tone.'}];
+    const text = await callAI(messages, 700);
+    el.innerHTML = '<div style="background:white;border-radius:12px;padding:14px;font-size:13px;line-height:1.7;color:var(--text)">' + text.replace(/\n/g,'<br>') + '</div><button class="btn btn-outline btn-sm" style="width:100%;margin-top:8px" onclick="saveBakingIdea()">💾 Save Baking Idea</button>';
+    window._lastBakingIdea = text;
+  } catch(e) {
+    el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not load baking idea. Please try again.</div>';
+  }
+  btn.textContent = '✨ Generate Baking Idea';
+  btn.disabled = false;
+}
+function saveBakingIdea() {
+  if (!window._lastBakingIdea) return;
+  const ideas = load('baking-ideas', []);
+  ideas.unshift({ text: window._lastBakingIdea, date: todayKey() });
+  save('baking-ideas', ideas);
+  renderBakingIdeas();
+  toast('Baking idea saved! 🧁');
+}
+function renderBakingIdeas() {
+  const ideas = load('baking-ideas', []);
+  const el = document.getElementById('baking-list');
+  if (!el) return;
+  if (!ideas.length) { el.innerHTML = '<div style="font-size:13px;color:var(--text2)">No saved baking ideas yet. Generate one!</div>'; return; }
+  el.innerHTML = ideas.slice(0,10).map((r,i) => `
+    <div style="padding:10px 0;border-bottom:1px solid var(--border)">
+      <div style="font-size:12px;color:var(--text3);margin-bottom:4px">${r.date}</div>
+      <div style="font-size:13px;color:var(--text);line-height:1.6">${r.text.slice(0,200)}...</div>
+      <button onclick="deleteBakingIdea(${i})" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;margin-top:4px">Delete</button>
+    </div>
+  `).join('');
+}
+function deleteBakingIdea(i) {
+  const r = load('baking-ideas', []); r.splice(i,1); save('baking-ideas', r); renderBakingIdeas();
 }
 
 // ======= HEALTH FACT (AI) =======
@@ -4446,7 +4741,7 @@ async function rateMyDay() {
   const mealList = dayLogs.map(l => `${l.meal}: ${l.name} (felt: ${l.feel})`).join('\n');
   
   try {
-    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, a young Indian-American college student doing strength training, trying to lower resting heart rate, build lean muscle, improve energy. She eats Indian and American food.\n\nHere is what she ate on ' + dateToShow + ':\n' + mealList + '\n\nGive: 1) Overall Nutrition Score X/10 with reason 2) Estimated Macros (protein/carbs/fat ranges) 3) Key Micronutrients she got or missed (flag iron, calcium, vitamin D) 4) 3 quick wins 5) 1-2 things to adjust 6) Warm encouraging closing. Be specific to her actual meals.'}];
+    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, a college student doing strength training, trying to lower resting heart rate, build lean muscle, improve energy. She eats Indian and American food.\n\nHere is what she ate on ' + dateToShow + ':\n' + mealList + '\n\nGive: 1) Overall Nutrition Score X/10 with reason 2) Estimated Macros (protein/carbs/fat ranges) 3) Key Micronutrients she got or missed (flag iron, calcium, vitamin D) 4) 3 quick wins 5) 1-2 things to adjust 6) Warm encouraging closing. Be specific to her actual meals.'}];
     const text = await callAI(messages, 600);    el.innerHTML = `<div style="background:var(--mint-light);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;color:var(--text)">${text.replace(/\n/g,'<br>')}</div>`;
   } catch(e) {
     el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not analyze. Try again.</div>';
@@ -4504,6 +4799,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSymptoms();
   renderFoodLog();
   renderRecipes();
+  renderBakingIdeas();
   renderSavedFacts();
   loadPeriodData();
   renderWeeklySplit();
@@ -4572,7 +4868,7 @@ async function rateMyWeek() {
     return dayMeals.length ? `${d}: ${dayMeals.map(m => m.name).join(', ')}` : `${d}: nothing logged`;
   }).join('\n');
   try {
-    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, young Indian-American college student doing strength training, trying to lower resting HR, build lean muscle, improve energy.\n\nThis week food log:\n' + summary + '\n\nGive a WEEKLY nutrition review: 1) Weekly Nutrition Score X/10 2) Average estimated macros 3) Micronutrient patterns (flag iron, calcium, vit D) 4) Best eating day and why 5) Biggest nutrition gap 6) 3 specific recommendations for next week 7) Encouraging closing. Be specific and warm.'}];
+    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, college student doing strength training, trying to lower resting HR, build lean muscle, improve energy.\n\nThis week food log:\n' + summary + '\n\nGive a WEEKLY nutrition review: 1) Weekly Nutrition Score X/10 2) Average estimated macros 3) Micronutrient patterns (flag iron, calcium, vit D) 4) Best eating day and why 5) Biggest nutrition gap 6) 3 specific recommendations for next week 7) Encouraging closing. Be specific and warm.'}];
     const text = await callAI(messages, 700);    el.innerHTML = `<div style="background:var(--sky-light);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;color:var(--text)"><strong style="color:#0369a1">📊 Weekly Nutrition Review</strong><br><br>${text.replace(/\n/g,'<br>')}</div>`;
   } catch(e) { el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not analyze. Try again.</div>'; }
 }
@@ -4591,7 +4887,7 @@ async function rateMyMonth() {
   const feelBad = monthLogs.filter(l => l.feel && (l.feel.includes('Not great') || l.feel.includes('Bad'))).map(l => l.name);
   const highRated = monthLogs.filter(l => l.rating && l.rating.startsWith('⭐⭐⭐⭐')).map(l => l.name);
   try {
-    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, young Indian-American college student doing strength training, working to lower high resting HR, build lean muscle, improve energy.\n\nThis month she logged ' + monthLogs.length + ' meals. Foods eaten: ' + mealNames.slice(0,500) + '\nFoods that made her feel bad: ' + (feelBad.slice(0,10).join(', ') || 'none flagged') + '\nHighly rated foods: ' + (highRated.slice(0,10).join(', ') || 'none') + '\n\nGive a MONTHLY nutrition analysis: 1) Monthly Nutrition Score X/10 2) Macro pattern 3) Top 3 micronutrient concerns 4) Foods that suit her well 5) Foods to reduce 6) Top 3 goals for next month 7) Encouraging closing. Be specific and practical.'}];
+    const messages = [{role:'user', content: 'You are a nutrition coach for Alisha, college student doing strength training, working to lower high resting HR, build lean muscle, improve energy.\n\nThis month she logged ' + monthLogs.length + ' meals. Foods eaten: ' + mealNames.slice(0,500) + '\nFoods that made her feel bad: ' + (feelBad.slice(0,10).join(', ') || 'none flagged') + '\nHighly rated foods: ' + (highRated.slice(0,10).join(', ') || 'none') + '\n\nGive a MONTHLY nutrition analysis: 1) Monthly Nutrition Score X/10 2) Macro pattern 3) Top 3 micronutrient concerns 4) Foods that suit her well 5) Foods to reduce 6) Top 3 goals for next month 7) Encouraging closing. Be specific and practical.'}];
     const text = await callAI(messages, 700);    el.innerHTML = `<div style="background:var(--gold-light);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;color:var(--text)"><strong style="color:#b45309">📅 Monthly Nutrition Review</strong><br><br>${text.replace(/\n/g,'<br>')}</div>`;
   } catch(e) { el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not analyze. Try again.</div>'; }
 }
@@ -4834,9 +5130,62 @@ async function addAIClass() {
     statusEl.textContent = '✅ Study system created! Click "' + name + '" tab to view it.';
     toast('Study system for ' + name + ' created!');
   } catch(e) {
-    statusEl.textContent = '❌ Error generating. Try again.';
     console.error(e);
+    // Do not let one AI/API issue make the feature unusable. Create a solid local
+    // study system so the button still works, then show the API error for debugging.
+    const system = buildFallbackStudySystem(name, desc);
+    const classes = load('custom-classes', []);
+    const classKey = 'class-' + Date.now();
+    classes.push({key: classKey, name, desc, system});
+    save('custom-classes', classes);
+    addClassTab(classKey, name);
+    renderMyClassesList();
+    document.getElementById('new-class-name').value = '';
+    document.getElementById('new-class-desc').value = '';
+    statusEl.textContent = '⚠️ AI API failed, so I made a backup study system locally. Error: ' + (e.message || e);
+    toast('Backup study system created');
   }
+}
+
+function buildFallbackStudySystem(name, desc) {
+  const lower = (name + ' ' + desc).toLowerCase();
+  const isChem = /chem|organic|ochem|gen chem/.test(lower);
+  const isBio = /bio|mcb|physio|anatomy|genetics/.test(lower);
+  const isMath = /math|calc|stats|physics|quant/.test(lower);
+  const problemTask = isChem || isMath ? 'Do 8-12 practice problems and mark every miss by error type' : 'Make active-recall questions from your notes and quiz yourself out loud';
+  const memorizeTask = isBio || isChem ? 'Build Anki cards for terms, pathways, reactions, formulas, and exceptions' : 'Create a one-page formula/concept sheet from memory';
+  return {
+    phases: [
+      { title: 'Before Lecture', tasks: [
+        'Preview the lecture slides or reading for 10-20 minutes',
+        'Write 3 questions you want answered in class',
+        'Skim key vocabulary so lecture feels familiar'
+      ]},
+      { title: 'After Lecture', tasks: [
+        'Within 24 hours, rewrite the lecture into a short study sheet',
+        problemTask,
+        memorizeTask,
+        'Flag confusing topics for office hours or AI tutoring'
+      ]},
+      { title: '48-Hour Review', tasks: [
+        'Blurting: write everything you remember without notes',
+        'Review only the gaps, not everything again',
+        'Do a mini quiz or 15-minute Anki session'
+      ]},
+      { title: 'Weekly Review', tasks: [
+        'Combine the week into one master concept map',
+        'Do mixed practice so topics do not stay isolated',
+        'Update your running mistake log'
+      ]},
+      { title: 'Exam Prep', tasks: [
+        'Start 7-10 days before the exam with active recall, not rereading',
+        'Do timed practice and review mistakes the same day',
+        'Make a last-page sheet of high-yield formulas/details',
+        'Teach the hardest topic out loud using the Feynman method'
+      ]}
+    ],
+    tips: 'Protect consistency: small daily review beats one giant panic session.'
+  };
 }
 
 function renderMyClassesList() {
@@ -5194,6 +5543,124 @@ function restoreCoreClass(key) {
   showStudyTab(key);
   toast('Class restored!');
 }
+
+
+// ============================================================
+// FOOD LOG NUTRITION UPGRADE — interval macros/micros + goals
+// Added without changing existing food/study/schedule systems.
+// ============================================================
+function nutritionEscape(str) {
+  return String(str || '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+}
+function initFoodNutritionUpgrade() {
+  const foodTab = document.getElementById('itab-food');
+  if (!foodTab || document.getElementById('nutrition-interval-card')) return;
+  const firstCard = foodTab.querySelector('.card');
+  if (!firstCard) return;
+  const today = todayKey();
+  firstCard.insertAdjacentHTML('afterend', `
+    <div class="card" id="nutrition-interval-card" style="background:linear-gradient(135deg,var(--sky-light),var(--mint-light));border:none">
+      <div class="card-title" style="margin-bottom:8px">🥗 AI Nutrition Facts + Macro/Micro Review</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:10px">
+        Pick any time range and AI will estimate calories, protein/carbs/fat, fiber, key micronutrients, patterns, and specific advice from your logged meals.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="form-group" style="margin:0"><label>Start date</label><input type="date" id="nutrition-start" value="${today}"></div>
+        <div class="form-group" style="margin:0"><label>End date</label><input type="date" id="nutrition-end" value="${today}"></div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn btn-pink btn-sm" style="flex:1" onclick="analyzeNutritionInterval('full')">✨ Analyze Range</button>
+        <button class="btn btn-outline btn-sm" style="flex:1" onclick="analyzeNutritionInterval('facts')">📊 Nutrition Facts</button>
+        <button class="btn btn-outline btn-sm" style="flex:1" onclick="analyzeNutritionInterval('advice')">💡 Advice</button>
+      </div>
+      <div id="nutrition-interval-output" style="margin-top:12px;display:none"></div>
+    </div>
+    <div class="card" id="nutrition-goal-card">
+      <div class="card-title" style="margin-bottom:8px">💪 AI Health Bot: Calories + Muscle Goal Plan</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:10px">
+        Get a practical calorie/macro target and meal advice for your weight + muscle goals. This is an estimate, not medical advice.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="form-group" style="margin:0"><label>Current weight</label><input type="number" id="goal-current-weight" value="125" placeholder="lbs"></div>
+        <div class="form-group" style="margin:0"><label>Goal weight</label><input type="number" id="goal-target-weight" value="130" placeholder="lbs"></div>
+        <div class="form-group" style="margin:0"><label>Height</label><input type="text" id="goal-height" value="5'8" placeholder="5'8"></div>
+        <div class="form-group" style="margin:0"><label>Training days/week</label><input type="number" id="goal-training-days" value="3" min="0" max="7"></div>
+      </div>
+      <div class="form-group" style="margin-top:10px"><label>Main goal</label>
+        <select id="goal-type"><option>Build muscle / lean bulk</option><option>Maintain weight + recomp</option><option>Gain healthy weight</option><option>Improve energy + digestion</option><option>Lose fat slowly</option></select>
+      </div>
+      <div class="form-group"><label>Food/health notes</label><input type="text" id="goal-food-notes" placeholder="e.g. stomach issues, quick meals, vegetarian days, dairy sensitivity..."></div>
+      <button class="btn btn-pink" style="width:100%" onclick="generateNutritionGoalPlan()">✨ Generate My Eating Targets</button>
+      <div id="nutrition-goal-output" style="margin-top:12px;display:none"></div>
+    </div>
+  `);
+}
+function getNutritionLogsInRange() {
+  const logs = load('food-logs', []);
+  const start = document.getElementById('nutrition-start')?.value || todayKey();
+  const end = document.getElementById('nutrition-end')?.value || start;
+  const lo = start <= end ? start : end;
+  const hi = start <= end ? end : start;
+  return { start: lo, end: hi, logs: logs.filter(l => l.date && l.date >= lo && l.date <= hi) };
+}
+function summarizeNutritionLogs(logs) {
+  const byDate = {};
+  logs.forEach(l => {
+    if (!byDate[l.date]) byDate[l.date] = [];
+    byDate[l.date].push(`${l.meal || 'Meal'}: ${l.name || 'Meal'} (felt: ${l.feel || 'not logged'}, rating: ${l.rating || 'not logged'})`);
+  });
+  return Object.keys(byDate).sort().map(d => `${d}\n- ${byDate[d].join('\n- ')}`).join('\n\n');
+}
+async function analyzeNutritionInterval(mode='full') {
+  const {start, end, logs} = getNutritionLogsInRange();
+  const el = document.getElementById('nutrition-interval-output');
+  if (!el) return;
+  if (!logs.length) { toast('No meals logged in that range!'); return; }
+  el.style.display = 'block';
+  el.innerHTML = '<div style="font-size:13px;color:var(--text2)">✨ Analyzing nutrition...</div>';
+  const summary = summarizeNutritionLogs(logs);
+  let ask = '';
+  if (mode === 'facts') {
+    ask = 'Create a nutrition facts style summary for this exact logged time range. Estimate total and daily average calories, protein, carbs, fat, fiber, sugar if possible, plus key micronutrients. Use ranges and explain uncertainty. Include a compact table-like layout.';
+  } else if (mode === 'advice') {
+    ask = 'Give targeted nutrition advice for this time range. Focus on muscle gain/recomp, steady energy, digestion/stomach-friendliness, hydration, iron, calcium, vitamin D, protein timing, and easy realistic meal swaps.';
+  } else {
+    ask = 'Give a full nutrition review for this time range: 1) overall score /10, 2) estimated total and daily average calories, 3) estimated macros with protein/carbs/fat/fiber, 4) micronutrients she likely got or missed, especially iron/calcium/vitamin D/magnesium/potassium/B12, 5) digestion/stomach notes, 6) what to eat more of, 7) what to adjust, 8) 3 practical next steps.';
+  }
+  const system = 'You are Alisha’s AI nutrition helper. Be specific, warm, practical, and honest about estimates. Do not diagnose or give medical treatment. Mention that estimates are approximate because food amounts are not fully logged. Alisha is a 19-year-old 5\'8 pre-dental student around 125 lb who wants to build muscle/healthy weight, improve energy, support digestion/stomach issues, and eat realistic everyday meals. Do NOT default to Indian/Punjabi/masala/curry-style food unless she explicitly asks; she says she barely eats Indian food.';
+  const prompt = `Date range: ${start} to ${end}\nMeals logged (${logs.length} entries):\n${summary}\n\n${ask}\n\nFormatting: use clear headings, concise bullets, and include meal ideas she can actually eat.`;
+  try {
+    const text = await callAI([{role:'user', content: prompt}], 900, system);
+    el.innerHTML = `<div style="background:white;border:1px solid var(--border);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;color:var(--text)">${nutritionEscape(text).replace(/\n/g,'<br>')}</div>`;
+  } catch(e) {
+    el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not analyze nutrition. Check the AI connection/API key and try again.</div>';
+  }
+}
+async function generateNutritionGoalPlan() {
+  const el = document.getElementById('nutrition-goal-output');
+  if (!el) return;
+  const currentWeight = document.getElementById('goal-current-weight')?.value || '125';
+  const targetWeight = document.getElementById('goal-target-weight')?.value || '130';
+  const height = document.getElementById('goal-height')?.value || "5'8";
+  const trainingDays = document.getElementById('goal-training-days')?.value || '3';
+  const goalType = document.getElementById('goal-type')?.value || 'Build muscle / lean bulk';
+  const notes = document.getElementById('goal-food-notes')?.value || '';
+  const logs = load('food-logs', []).slice(0, 30);
+  const recentFoods = logs.map(l => `${l.date}: ${l.name}`).join(', ').slice(0, 800) || 'No recent foods logged yet.';
+  el.style.display = 'block';
+  el.innerHTML = '<div style="font-size:13px;color:var(--text2)">✨ Building your nutrition target...</div>';
+  const system = 'You are Alisha’s AI health/nutrition helper. Provide safe, practical nutrition coaching. Do not diagnose, prescribe supplements, or encourage extreme dieting. Give calorie and macro ranges as estimates and suggest checking with a clinician/dietitian for medical concerns or persistent stomach symptoms.';
+  const prompt = `Create a personalized eating target for Alisha.\n\nStats/goals:\n- Age: 19\n- Height: ${height}\n- Current weight: ${currentWeight} lb\n- Goal weight/body goal: ${targetWeight} lb, ${goalType}\n- Training days/week: ${trainingDays}\n- Notes: ${notes || 'stomach issues; wants realistic everyday food; wants muscle/energy; does not want Indian-style food unless requested'}\n- Recent logged foods: ${recentFoods}\n\nGive:\n1) estimated maintenance calories and target calorie range\n2) protein/carbs/fat targets in grams\n3) meal timing for stomach issues and muscle gain\n4) what a normal day of eating could look like using easy college foods she would realistically eat\n5) pre/post workout food ideas\n6) micronutrients to prioritize (iron, calcium, vitamin D, magnesium, potassium, B12)\n7) what to track weekly besides scale weight\n8) one gentle warning about under-eating/over-restricting.\nKeep it practical and encouraging.`;
+  try {
+    const text = await callAI([{role:'user', content: prompt}], 950, system);
+    el.innerHTML = `<div style="background:var(--pink-light);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;color:var(--text)">${nutritionEscape(text).replace(/\n/g,'<br>')}</div>`;
+  } catch(e) {
+    el.innerHTML = '<div style="font-size:13px;color:#991b1b">Could not generate targets. Check the AI connection/API key and try again.</div>';
+  }
+}
+// If the Health/Food tab exists, add the upgrade when the page loads.
+document.addEventListener('DOMContentLoaded', initFoodNutritionUpgrade);
+
 </script>
 </body>
 </html>
