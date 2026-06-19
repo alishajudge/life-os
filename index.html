@@ -2249,6 +2249,24 @@ async function callAI(messages, maxTokens, system) {
 
   throw new Error('AI response format not recognized: ' + raw.slice(0, 300));
 }
+// Repairs common AI JSON mistakes (trailing commas, stray text) before parsing
+function safeJsonParse(text) {
+  let cleaned = text.replace(/```json|```/g, '').trim();
+  // Remove trailing commas before ] or }
+  cleaned = cleaned.replace(/,(\s*[\]}])/g, '$1');
+  // Extract just the JSON object/array if there's extra text around it
+  const firstBrace = Math.min(
+    ...['{', '['].map(c => { const i = cleaned.indexOf(c); return i === -1 ? Infinity : i; })
+  );
+  const lastBrace = Math.max(
+    ...['}', ']'].map(c => cleaned.lastIndexOf(c))
+  );
+  if (firstBrace !== Infinity && lastBrace !== -1 && lastBrace > firstBrace) {
+    cleaned = cleaned.slice(firstBrace, lastBrace + 1);
+  }
+  return JSON.parse(cleaned);
+}
+
 
 const todayKey = () => new Date().toISOString().slice(0,10);
 const now = new Date();
@@ -5115,8 +5133,8 @@ async function addAIClass() {
   statusEl.textContent = '✨ Generating study system for ' + name + '...';
   try {
     const messages = [{role:'user', content: 'Create a study system for a college class called "' + name + '". Description: "' + (desc || 'No description provided') + '".\n\nAlisha is a pre-dental UC Berkeley student. She uses active recall, spaced repetition (Anki), Feynman technique, Pomodoro. She has midterms and finals.\n\nReturn ONLY valid JSON (no markdown): {"phases":[{"title":"Before Lecture","tasks":["task 1","task 2","task 3"]},{"title":"After Lecture","tasks":["task 1","task 2","task 3"]},{"title":"Weekly Review","tasks":["task 1","task 2"]},{"title":"Exam Prep","tasks":["task 1","task 2","task 3"]},{"title":"Watch Out For","tasks":["task 1","task 2"]}],"tips":"one key tip"}\n\nMake it specific to the class. 3-5 tasks per phase.'}];
-    let text = await callAI(messages, 1000);    text = text.replace(/```json|```/g,'').trim();
-    const system = JSON.parse(text);
+    let text = await callAI(messages, 1000);
+    const system = safeJsonParse(text);
     // Save the class
     const classes = load('custom-classes', []);
     const classKey = 'class-' + Date.now();
