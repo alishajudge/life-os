@@ -216,6 +216,15 @@ label { font-size: 15px; font-weight: 500; color: var(--text2); display: block; 
 .mt8 { margin-top: 8px; }
 .mt12 { margin-top: 12px; }
 .gap8 { gap: 8px; }
+
+.pomo-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--border);
+  transition: all 0.3s;
+}
+.pomo-dot.filled { background: var(--pink); }
+.pomo-dot.current { background: var(--pink); box-shadow: 0 0 0 3px rgba(212,68,122,0.2); transform: scale(1.2); }
+
 </style>
 </head>
 <body>
@@ -674,14 +683,92 @@ label { font-size: 15px; font-weight: 500; color: var(--text2); display: block; 
   </div>
 
   <div class="inner-tabs" id="study-tabs">
+    <div class="itab active" onclick="showStudyTab('pomodoro')">🍅 Focus Timer</div>
     <div id="core-class-tabs" style="display:contents"></div>
     <div class="itab" onclick="showStudyTab('dat')">🦷 DAT</div>
     <div class="itab" onclick="showStudyTab('methods')">💡 Methods</div>
     <div class="itab" onclick="showStudyTab('classes')">➕ My Classes</div>
   </div>
 
+  <!-- POMODORO FOCUS TIMER -->
+  <div id="study-pomodoro" class="study-tab-content active">
+    <div class="card" style="text-align:center;padding:32px 20px">
+      <div id="pomo-mode-label" style="font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--pink);margin-bottom:8px">FOCUS SESSION</div>
+      <div id="pomo-display" style="font-size:64px;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;line-height:1;margin-bottom:6px">25:00</div>
+      <div id="pomo-task-label" style="font-size:14px;color:var(--text2);margin-bottom:20px;min-height:18px"></div>
+
+      <div style="display:flex;gap:10px;justify-content:center;margin-bottom:18px">
+        <button class="btn btn-pink" id="pomo-start-btn" style="min-width:120px" onclick="pomoToggle()">▶ Start</button>
+        <button class="btn btn-outline" onclick="pomoReset()">↺ Reset</button>
+        <button class="btn btn-outline" onclick="pomoSkip()">⏭ Skip</button>
+      </div>
+
+      <div style="display:flex;gap:6px;justify-content:center">
+        <div id="pomo-dot-1" class="pomo-dot"></div>
+        <div id="pomo-dot-2" class="pomo-dot"></div>
+        <div id="pomo-dot-3" class="pomo-dot"></div>
+        <div id="pomo-dot-4" class="pomo-dot"></div>
+      </div>
+      <div id="pomo-session-num" style="font-size:11px;color:var(--text3);margin-top:6px">Session 1 of 4 — long break after 4</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎯 What are you working on?</div>
+      <input type="text" id="pomo-task-input" placeholder="e.g. Bio 1A Chapter 6, DAT practice problems..." oninput="pomoUpdateTask()">
+    </div>
+
+    <div class="card">
+      <div class="card-title">⏱ Timer Settings</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="form-group" style="margin:0">
+          <label>Focus (min)</label>
+          <input type="number" id="pomo-focus-len" value="25" min="5" max="90" onchange="pomoUpdateSettings()">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Short break (min)</label>
+          <input type="number" id="pomo-short-len" value="5" min="1" max="30" onchange="pomoUpdateSettings()">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Long break (min)</label>
+          <input type="number" id="pomo-long-len" value="15" min="5" max="60" onchange="pomoUpdateSettings()">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Sound</label>
+          <select id="pomo-sound" onchange="pomoUpdateSettings()">
+            <option value="chime">🔔 Chime</option>
+            <option value="bell">🛎 Bell</option>
+            <option value="none">🔇 Silent</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Today's Focus Stats</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center">
+        <div>
+          <div id="pomo-today-sessions" style="font-size:24px;font-weight:800;color:var(--pink)">0</div>
+          <div style="font-size:11px;color:var(--text2)">Sessions</div>
+        </div>
+        <div>
+          <div id="pomo-today-minutes" style="font-size:24px;font-weight:800;color:var(--lavender)">0</div>
+          <div style="font-size:11px;color:var(--text2)">Minutes</div>
+        </div>
+        <div>
+          <div id="pomo-streak-count" style="font-size:24px;font-weight:800;color:var(--mint)">0</div>
+          <div style="font-size:11px;color:var(--text2)">Day Streak</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📜 Recent Sessions</div>
+      <div id="pomo-history"></div>
+    </div>
+  </div>
+
   <!-- BIO 1A — original content, but now deletable tasks -->
-  <div id="study-bio" class="study-tab-content active">
+  <div id="study-bio" class="study-tab-content">
     <div class="card">
       <div class="card-title">Before Every Lecture (10-25 min)</div>
       <div id="bio-pre-lecture"></div>
@@ -4880,6 +4967,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHairRoutine('wash');
   renderHairRoutine('oil');
   renderHairJournal();
+  initPomodoro();
   generateHealthFact();
   // New v5
   renderShadowingDentists();
@@ -5527,19 +5615,14 @@ function initCoreClassTabs() {
   // Add any new ones not in saved order
   active.forEach(c => { if (!ordered.find(o=>o.key===c.key)) ordered.push(c); });
   container.innerHTML = ordered.map((cls, i) => `
-    <div class="itab${i===0?' active':''}" onclick="showStudyTab('${cls.key}')" data-corekey="${cls.key}">${cls.emoji} ${cls.name}</div>
+    <div class="itab" onclick="showStudyTab('${cls.key}')" data-corekey="${cls.key}">${cls.emoji} ${cls.name}</div>
   `).join('');
-  // Show first active class's content, or dat if all deleted
-  if (active.length > 0) {
-    showStudyTab(active[0].key);
-    // Show/hide static divs for bio and lab
-    builtinCoreClasses.forEach(cls => {
-      const el = document.getElementById('study-' + cls.key);
-      if (el) el.style.display = active.find(a=>a.key===cls.key) ? '' : 'none';
-    });
-  } else {
-    showStudyTab('dat');
-  }
+  // Show/hide static divs for bio and lab (but don't force-switch the active tab —
+  // Pomodoro is the default landing tab and should stay active on load)
+  builtinCoreClasses.forEach(cls => {
+    const el = document.getElementById('study-' + cls.key);
+    if (el) el.style.display = active.find(a=>a.key===cls.key) ? '' : 'none';
+  });
 }
 
 function deleteCoreClass(key) {
@@ -5713,6 +5796,250 @@ async function generateNutritionGoalPlan() {
 }
 // If the Health/Food tab exists, add the upgrade when the page loads.
 document.addEventListener('DOMContentLoaded', initFoodNutritionUpgrade);
+
+
+// ============================================================
+// POMODORO FOCUS TIMER
+// ============================================================
+let pomoInterval = null;
+let pomoSecondsLeft = 25 * 60;
+let pomoMode = 'focus'; // 'focus', 'short', 'long'
+let pomoRunning = false;
+let pomoCycleCount = 0; // completed focus sessions today (resets logic uses count%4)
+let pomoStartedAt = null;
+
+function pomoSettings() {
+  return {
+    focus: parseInt(document.getElementById('pomo-focus-len')?.value) || 25,
+    short: parseInt(document.getElementById('pomo-short-len')?.value) || 5,
+    long: parseInt(document.getElementById('pomo-long-len')?.value) || 15,
+    sound: document.getElementById('pomo-sound')?.value || 'chime',
+  };
+}
+
+function pomoUpdateSettings() {
+  save('pomo-settings', pomoSettings());
+  if (!pomoRunning) pomoResetDisplay();
+}
+
+function pomoLoadSettings() {
+  const s = load('pomo-settings', null);
+  if (s) {
+    const f = document.getElementById('pomo-focus-len');
+    const sh = document.getElementById('pomo-short-len');
+    const l = document.getElementById('pomo-long-len');
+    const snd = document.getElementById('pomo-sound');
+    if (f) f.value = s.focus;
+    if (sh) sh.value = s.short;
+    if (l) l.value = s.long;
+    if (snd) snd.value = s.sound;
+  }
+  pomoResetDisplay();
+}
+
+function pomoModeLength() {
+  const s = pomoSettings();
+  if (pomoMode === 'focus') return s.focus * 60;
+  if (pomoMode === 'short') return s.short * 60;
+  return s.long * 60;
+}
+
+function pomoResetDisplay() {
+  pomoSecondsLeft = pomoModeLength();
+  pomoRender();
+}
+
+function pomoRender() {
+  const m = Math.floor(pomoSecondsLeft / 60);
+  const s = pomoSecondsLeft % 60;
+  const el = document.getElementById('pomo-display');
+  if (el) el.textContent = m + ':' + String(s).padStart(2,'0');
+
+  const labelEl = document.getElementById('pomo-mode-label');
+  if (labelEl) {
+    labelEl.textContent = pomoMode === 'focus' ? 'FOCUS SESSION' : pomoMode === 'short' ? 'SHORT BREAK' : 'LONG BREAK ☕';
+    labelEl.style.color = pomoMode === 'focus' ? 'var(--pink)' : 'var(--mint)';
+  }
+
+  // Update dots
+  for (let i = 1; i <= 4; i++) {
+    const dot = document.getElementById('pomo-dot-' + i);
+    if (!dot) continue;
+    dot.classList.remove('filled', 'current');
+    const completedInCycle = pomoCycleCount % 4;
+    if (i <= completedInCycle) dot.classList.add('filled');
+    if (i === completedInCycle + 1 && pomoMode === 'focus') dot.classList.add('current');
+  }
+  const sessionNumEl = document.getElementById('pomo-session-num');
+  if (sessionNumEl) sessionNumEl.textContent = 'Session ' + ((pomoCycleCount % 4) + 1) + ' of 4 — long break after 4';
+
+  document.title = (pomoRunning ? '🍅 ' + m + ':' + String(s).padStart(2,'0') + ' — ' : '') + "Alisha's Life OS";
+}
+
+function pomoToggle() {
+  if (pomoRunning) {
+    pomoPause();
+  } else {
+    pomoStart();
+  }
+}
+
+function pomoStart() {
+  pomoRunning = true;
+  pomoStartedAt = pomoStartedAt || Date.now();
+  const btn = document.getElementById('pomo-start-btn');
+  if (btn) btn.textContent = '⏸ Pause';
+  pomoInterval = setInterval(() => {
+    pomoSecondsLeft--;
+    if (pomoSecondsLeft <= 0) {
+      pomoComplete();
+      return;
+    }
+    pomoRender();
+  }, 1000);
+}
+
+function pomoPause() {
+  pomoRunning = false;
+  clearInterval(pomoInterval);
+  const btn = document.getElementById('pomo-start-btn');
+  if (btn) btn.textContent = '▶ Resume';
+}
+
+function pomoReset() {
+  pomoPause();
+  pomoStartedAt = null;
+  pomoResetDisplay();
+  const btn = document.getElementById('pomo-start-btn');
+  if (btn) btn.textContent = '▶ Start';
+}
+
+function pomoSkip() {
+  pomoPause();
+  pomoAdvanceMode(false);
+}
+
+function pomoComplete() {
+  clearInterval(pomoInterval);
+  pomoRunning = false;
+  pomoPlaySound();
+
+  if (pomoMode === 'focus') {
+    // Log the completed session
+    const task = document.getElementById('pomo-task-input')?.value.trim() || 'Focused study';
+    const settings = pomoSettings();
+    const log = load('pomo-log', []);
+    log.unshift({ date: todayKey(), task, minutes: settings.focus, time: new Date().toTimeString().slice(0,5) });
+    save('pomo-log', log);
+    pomoCycleCount++;
+    save('pomo-cycle-count-' + todayKey(), pomoCycleCount);
+    toast('🍅 Session complete! Great focus, Alisha.');
+    pomoRenderStats();
+    pomoRenderHistory();
+    // Mark study habit done for today
+    try {
+      const habits = load('habits-' + todayKey(), {});
+      habits['study'] = true;
+      save('habits-' + todayKey(), habits);
+      if (typeof renderHabitTiles === 'function') renderHabitTiles();
+    } catch(e) {}
+  } else {
+    toast('Break over — ready to focus? 💪');
+  }
+
+  pomoAdvanceMode(true);
+}
+
+function pomoAdvanceMode(autoStart) {
+  if (pomoMode === 'focus') {
+    pomoMode = (pomoCycleCount % 4 === 0) ? 'long' : 'short';
+  } else {
+    pomoMode = 'focus';
+  }
+  pomoStartedAt = null;
+  pomoResetDisplay();
+  const btn = document.getElementById('pomo-start-btn');
+  if (btn) btn.textContent = '▶ Start';
+}
+
+function pomoUpdateTask() {
+  const val = document.getElementById('pomo-task-input')?.value || '';
+  const label = document.getElementById('pomo-task-label');
+  if (label) label.textContent = val ? '📌 ' + val : '';
+  save('pomo-current-task', val);
+}
+
+function pomoPlaySound() {
+  const sound = pomoSettings().sound;
+  if (sound === 'none') return;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const freqs = sound === 'bell' ? [880, 1108.73] : [659.25, 783.99, 987.77];
+    freqs.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = freq;
+      osc.type = 'sine';
+      const startTime = ctx.currentTime + i * 0.15;
+      gain.gain.setValueAtTime(0, startTime);
+      gain.gain.linearRampToValueAtTime(0.2, startTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.4);
+      osc.start(startTime);
+      osc.stop(startTime + 0.4);
+    });
+  } catch(e) { /* audio not available, silently skip */ }
+}
+
+function pomoRenderStats() {
+  const log = load('pomo-log', []);
+  const today = todayKey();
+  const todayLog = log.filter(l => l.date === today);
+  const sessionsEl = document.getElementById('pomo-today-sessions');
+  const minutesEl = document.getElementById('pomo-today-minutes');
+  const streakEl = document.getElementById('pomo-streak-count');
+  if (sessionsEl) sessionsEl.textContent = todayLog.length;
+  if (minutesEl) minutesEl.textContent = todayLog.reduce((a,l) => a + l.minutes, 0);
+  if (streakEl) {
+    // Count consecutive days with at least 1 session, going backwards from today
+    let streak = 0;
+    for (let i = 0; i < 365; i++) {
+      const d = new Date(now); d.setDate(d.getDate() - i);
+      const key = d.toISOString().slice(0,10);
+      const hasSession = log.some(l => l.date === key);
+      if (hasSession) streak++;
+      else if (i > 0) break; // allow today to be empty without breaking streak from yesterday
+    }
+    streakEl.textContent = streak;
+  }
+}
+
+function pomoRenderHistory() {
+  const log = load('pomo-log', []);
+  const el = document.getElementById('pomo-history');
+  if (!el) return;
+  if (!log.length) { el.innerHTML = '<div style="font-size:13px;color:var(--text2)">No sessions yet. Start your first focus block!</div>'; return; }
+  el.innerHTML = log.slice(0,15).map(l => `
+    <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)">
+      <div>
+        <div style="font-size:13px;font-weight:600">${l.task}</div>
+        <div style="font-size:11px;color:var(--text3)">${l.date} • ${l.time}</div>
+      </div>
+      <div style="font-size:13px;color:var(--pink);font-weight:700">${l.minutes}m</div>
+    </div>
+  `).join('');
+}
+
+function initPomodoro() {
+  pomoCycleCount = load('pomo-cycle-count-' + todayKey(), 0);
+  pomoLoadSettings();
+  const savedTask = load('pomo-current-task', '');
+  const taskInput = document.getElementById('pomo-task-input');
+  if (taskInput && savedTask) { taskInput.value = savedTask; pomoUpdateTask(); }
+  pomoRenderStats();
+  pomoRenderHistory();
+}
 
 </script>
 </body>
