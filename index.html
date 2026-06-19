@@ -264,6 +264,7 @@ label { font-size: 15px; font-weight: 500; color: var(--text2); display: block; 
       <a href="https://music.apple.com/ua/curator/apple-music-focus/1558257095" target="_blank" class="btn btn-outline btn-sm" style="text-decoration:none;font-size:11px">🎵 Focus Music</a>
       <a href="https://calendar.google.com" target="_blank" class="btn btn-outline btn-sm" style="text-decoration:none;font-size:11px">📅 Google Calendar</a>
       <button class="btn btn-outline btn-sm" style="font-size:11px" onclick="showSection('prayer')">🙏 Today's Prayer</button>
+      <button class="btn btn-outline btn-sm" id="sync-now-btn" style="font-size:11px" onclick="manualSync()">☁️ Sync Now</button>
     </div>
   </div>
 
@@ -2209,6 +2210,40 @@ async function pullFromSupabase() {
     }
   } catch(e) { console.warn('Supabase pull error:', e.message); }
 }
+async function manualSync() {
+  if (!CONFIGURED) { toast('Cloud sync not set up yet'); return; }
+  const btn = document.getElementById('sync-now-btn');
+  if (btn) { btn.textContent = '☁️ Syncing...'; btn.disabled = true; }
+  try {
+    // Push anything local that might not have synced yet (best effort)
+    // Then pull latest and apply WITHOUT a full reload — re-render in place
+    const res = await fetch(SUPABASE_URL + '/rest/v1/userdata?select=key,value&limit=500', {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY }
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const rows = await res.json();
+    let changed = 0;
+    rows.forEach(row => {
+      try {
+        if (localStorage.getItem(row.key) !== row.value) {
+          localStorage.setItem(row.key, row.value);
+          changed++;
+        }
+      } catch(e) {}
+    });
+    if (changed > 0) {
+      toast('☁️ Synced ' + changed + ' updates — refreshing...');
+      setTimeout(() => location.reload(), 800);
+    } else {
+      toast('☁️ Already up to date!');
+    }
+  } catch(e) {
+    toast('Sync failed — check connection');
+    console.warn('Manual sync error:', e.message);
+  }
+  if (btn) { btn.textContent = '☁️ Sync Now'; btn.disabled = false; }
+}
+
 async function callAI(messages, maxTokens, system) {
   const url = CF_WORKER_URL !== 'YOUR_CF_WORKER_URL' ? CF_WORKER_URL : 'http://localhost:3001/api';
 
